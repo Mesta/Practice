@@ -20,11 +20,11 @@
     {{#is "home,tag"}}
     <style>
         header {
-            margin: 20px auto;
+            margin: 0 auto;
             border-radius: 2px;
             padding-bottom: 20px;
-            width: 80%;
-            background: url({{@blog.cover}});
+            width: 100%;
+            background: url({{@blog.cover}}) center no-repeat fixed;
             background-size: cover;
             height: auto;
             text-align: center;
@@ -43,7 +43,6 @@
         header {
             width: 100%;
             text-align: center;
-            height: 50px;
         }
         header #nav li a,{
             color: #7bd0c1;
@@ -61,11 +60,10 @@
 </head>
 
 <body>
-
     {{{body}}}
 
     <footer>
-        Theme by <a href="https://github.com/Dennis-Mayk/Practice/">Dennis</a>
+        Theme by <a target="_blank" href="https://github.com/Dennis-Mayk/Practice/">Dennis</a> forked by <a href="https://github.com/Mesta/Practice" target="_blank">Mesta</a>
     </footer>
 
     {{ghost_foot}}
@@ -74,6 +72,17 @@
     <script src="{{asset "js/subbscribe.min.js"}}"></script>
     <script src="{{asset "js/infinitescroll.min.js"}}"></script>
     <script src="{{asset "js/index.js"}}"></script>
+
+    {{#is "home,tag"}}
+    <script>
+        $(document).on('ready', resize_header)
+        $(window).on('resize', resize_header)
+        
+        function resize_header() {
+            $('header').height($(window).height())
+        }
+    </script>
+    {{/is}}
 
 </body>
 
